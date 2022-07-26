@@ -15,3 +15,5 @@ jobs:
         python pip install pipenv
         python pipenv install safety
         python safety check
+        python pipenv install pep8
+        python pep8
