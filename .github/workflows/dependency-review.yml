@@ -12,6 +12,7 @@ permissions:
 
 jobs:
   dependency-review:
+  permissions: write-all
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout Repository'
