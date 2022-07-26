@@ -1,0 +1,34 @@
+<nav class="navbar is-info" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href="{{ url_for('home') }}">
+      <strong>Time Tracker</strong>
+    </a>
+    {% if g.user %}
+    <p class="navbar-item">Welcome, {{ g.user.username }}</p>
+    {% endif %}
+  </div>
+
+  <div class="navbar-menu">
+    <div class="navbar-start">
+    </div>
+
+    <div class="navbar-end">
+      <div class="navbar-item">
+        <div class="buttons">
+          {% if g.user %}
+          <a class="button is-light" href="{{ url_for('logout') }}">
+            Logout
+          </a>
+          {% else %}
+          <a class="button is-primary" href="{{ url_for('register') }}">
+            <strong>Register</strong>
+          </a>
+          <a class="button is-light" href="{{ url_for('login') }}">
+            Login
+          </a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{%- block htmltitle %}Home{%- endblock%}
+
+{%- block content %}
+<section class="section is-fullheight">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-one-third">
+        <div class="is-flex is-flex-direction-row">
+          <h1 class="title">Events</h1>
+
+          <a class="button is-rounded is-small is-primary ml-3" href="{{ url_for('add_event') }}">
+            <span class="icon is-small">
+              <i class="fas fa-plus"></i>
+            </span>
+          </a>
+        </div>
+
+        <div class="table-container">
+          <table class="table is-fullwidth">
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Hours</th>
+                <th>Comments</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for event in events %}
+              <tr>
+                <td>{{ event.date }}</td>
+                <td>{{ event.hours }}</td>
+                <td>{{ event.comments }}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{%- endblock %}

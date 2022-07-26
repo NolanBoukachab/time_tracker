@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{%- block htmltitle %}Login{%- endblock%}
+
+{%- block content %}
+<section class="hero is-fullheight-with-navbar">
+  <div class="hero-body">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-one-quarter">
+          <h1 class="title">Add Event</h1>
+
+          <form action="{{ url_for('submit_add_event') }}" method="post">
+            <div class="field">
+              <label class="label">Date</label>
+              <div class="control has-icons-left">
+                <input class="input" name="date" type="date" placeholder="Date" value="{{ date.today() }}" required>
+                <span class="icon is-small is-left">
+                  <i class="fas fa-calendar"></i>
+                </span>
+              </div>
+            </div>
+
+            <div class="field">
+              <label class="label">Hours</label>
+              <p class="control has-icons-left">
+                <input class="input" name="hours" type="number" min="0" max="12" placeholder="Hours" required>
+                <span class="icon is-small is-left">
+                  <i class="fas fa-stopwatch"></i>
+                </span>
+              </p>
+            </div>
+
+            <div class="field">
+              <label class="label">Comments</label>
+              <p class="control has-icons-left">
+                <input class="input" name="comments" type="text" placeholder="Comments">
+                <span class="icon is-small is-left">
+                  <i class="fas fa-comment"></i>
+                </span>
+              </p>
+            </div>
+
+            <div class="field is-grouped">
+              <p class="control">
+                <a class="button" href="{{ url_for('home') }}">Cancel</a>
+              </p>
+              <p class="control">
+                <button class="button is-primary" type="submit">Submit</button>
+              </p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{%- endblock %}
