@@ -1,6 +1,8 @@
 #!/bin/bash
 
 DEPLOY_PATH=/tmp/heroku-deploy-`date +%s`/
+git config --global user.email "ci.cd@deploy.com"
+git config --global user.name "ci.cd"
 
 rm -rf $DEPLOY_PATH
 mkdir -p $DEPLOY_PATH
