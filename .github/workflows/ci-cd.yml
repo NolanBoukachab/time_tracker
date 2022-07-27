@@ -27,4 +27,5 @@ jobs:
     if: ${{ github.ref == 'refs/heads/main' }}
     steps:
       - name: Deploy to Heroku
-      - run: bash automatic_deployment.sh
+      shell: bash
+      run: ./automatic_deployment.sh
