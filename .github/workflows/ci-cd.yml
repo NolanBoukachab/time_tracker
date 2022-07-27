@@ -23,8 +23,9 @@ jobs:
       - name: Packages vulnerabilities
         run: pipenv run safety check
   cd:
-    runs-on: ubuntu-latest
     if: ${{ github.ref == 'refs/heads/main' }}
+    runs-on: ubuntu-latest
     steps:
       - name: Deploy to Heroku
-        run: ./automatic_deployment.sh
+      shell: bash
+      run: ./automatic_deployment.sh
