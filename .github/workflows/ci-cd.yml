@@ -1,4 +1,4 @@
-name: 'CI-CD'
+  name: 'CI-CD'
 on: [push, pull_request]
 
 jobs:
@@ -29,4 +29,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Deploy to Heroku
-        run: ./automatic_deployment.sh
+        run: |
+        chmod +x ./automatic_deployment.sh
+        ./automatic_deployment.sh
