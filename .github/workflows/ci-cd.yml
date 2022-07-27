@@ -27,4 +27,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Deploy to Heroku
+        uses: actions/checkout@v3
         run: ./automatic_deployment.sh
