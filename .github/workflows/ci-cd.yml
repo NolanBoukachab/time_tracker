@@ -16,6 +16,8 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install pipenv
           pipenv install --dev
+      - name: Check Format
+        run: pipenv run black --check .
       - name: Lintin
         run: pipenv run flake8
       - name: Packages vulnerabilities
