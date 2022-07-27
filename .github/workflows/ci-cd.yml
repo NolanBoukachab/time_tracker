@@ -22,3 +22,9 @@ jobs:
         run: pipenv run flake8
       - name: Packages vulnerabilities
         run: pipenv run safety check
+  cd:
+    runs-on: ubuntu-latest
+    if: ${{ github.ref == 'refs/heads/main' }}
+    steps:
+      - name: Deploy to Heroku
+      - run: bash automatic_deployment.sh
