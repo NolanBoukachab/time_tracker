@@ -28,8 +28,8 @@ jobs:
     steps:
       - name: Set Environements variables
         env:
-          super_secret: ${{ HEROKU_USERNAME }}
-          super_secret: ${{ HEROKU_TOKEN }}
+          HEROKU_USERNAME: ${{ secrets.HEROKU_USERNAME }}
+          HEROKU_TOKEN: ${{ secrets.HEROKU_TOKEN }}
         run: |
           example-command "$SUPER_SECRET"
       - name: Checkout
