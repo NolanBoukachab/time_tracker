@@ -3,6 +3,7 @@ import pytest
 from pathlib import Path
 from time_tracker.app import app, close_db, get_db, init_db
 
+
 @pytest.fixture()
 def setup_db():
     def delete_db():
@@ -15,12 +16,14 @@ def setup_db():
     yield
     delete_db()
 
+
 @pytest.fixture()
 def db(setup_db):
     with app.app_context():
         conn = get_db()
         yield conn
         close_db(None)
+
 
 @pytest.fixture()
 def create_user(db):
@@ -46,9 +49,11 @@ def create_user(db):
 
     return wrapped
 
+
 @pytest.fixture()
 def client():
     return app.test_client()
+
 
 def test_add_event_success(db, create_user, client):
     # arrange
@@ -64,8 +69,8 @@ def test_add_event_success(db, create_user, client):
     assert response.status_code == 302
     assert response.headers["Location"] == "/"
     assert len(db.execute("SELECT * FROM events").fetchall()) == 1
-    
-    
+
+
 def test_add_event_fail(db, create_user, client):
     # arrange
     user = create_user("john", "test")
@@ -80,4 +85,3 @@ def test_add_event_fail(db, create_user, client):
     assert response.status_code == 304
     assert response.headers["Location"] == "/"
     assert len(db.execute("SELECT * FROM events").fetchall()) == 0
-
