@@ -30,6 +30,8 @@ jobs:
         env:
           HEROKU_USERNAME: ${{ HEROKU_USERNAME }}
           HEROKU_TOKEN: ${{ HEROKU_TOKEN }}
+        run: |
+          example-command "$SUPER_SECRET"
       - name: Checkout
         uses: actions/checkout@v3
       - name: Deploy to Heroku
