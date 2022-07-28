@@ -29,6 +29,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+      - name: Restore Git history (unshallow)
+        run: git fetch --prune --unshallow
       - name: Deploy to 
         env:
           HEROKU_USERNAME: ${{ secrets.HEROKU_USERNAME }}
