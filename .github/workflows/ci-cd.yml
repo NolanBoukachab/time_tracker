@@ -31,8 +31,8 @@ jobs:
           HEROKU_USERNAME: ${{ secrets.HEROKU_USERNAME }}
           HEROKU_TOKEN: ${{ secrets.HEROKU_TOKEN }}
         run: |
-          heroku_username-command "$HEROKU_USERNAME"
-          heroku_token-command "$HEROKU_TOKEN"
+          echo $HEROKU_USERNAME
+          echo $HEROKU_TOKEN
       - name: Checkout
         uses: actions/checkout@v3
       - name: Deploy to Heroku
