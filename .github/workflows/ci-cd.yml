@@ -28,7 +28,8 @@ jobs:
     steps:
       - name: Set Environements variables
         env:
-          super_secret: ${{ secrets.SuperSecret }}
+          super_secret: ${{ HEROKU_USERNAME }}
+          HEROKU_TOKEN: ${{ HEROKU_TOKEN }}
       - name: Checkout
         uses: actions/checkout@v3
       - name: Deploy to Heroku
