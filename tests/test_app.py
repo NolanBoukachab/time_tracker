@@ -77,11 +77,23 @@ def test_add_event_fail(db, create_user, client):
     with client.session_transaction() as sess:
         sess["user_id"] = user["id"]
 
-    # act
-    params = dict(date="2022-01-01", hours="0", comments="Work")
-    response = client.post("/add_event", data=params)
-
     # assert
-    assert response.status_code == 304
-    assert response.headers["Location"] == "/"
     assert len(db.execute("SELECT * FROM events").fetchall()) == 0
+
+
+def test_event_date_order(db, create_user, client):
+    user = create_user("john", "test")
+    with client.session_transaction() as sess:
+        sess["user_id"] = user["id"]
+
+    params = dict(date="2099-12-12", hours="1", comments="Work")
+    client.post("/add_event", data=params)
+
+    params = dict(date="2010-01-01", hours="1", comments="Work")
+    client.post("/add_event", data=params)
+
+    response = client.get("/")
+
+    assert int(response.data.decode("utf-8").find("2010-01-01")) > int(
+        response.data.decode("utf-8").find("2099-12-12")
+    )
