@@ -1,6 +1,3 @@
 #!/bin/bash
-echo ${HEROKU_USERNAME}
-echo ${HEROKU_TOKEN}
-echo ${"Test"}
-git remote add heroku https://${HEROKU_USERNAME}:${HEROKU_TOKEN}@git.herokuapp.com/timetrackin
+git remote add heroku https://${HEROKU_USERNAME}:${HEROKU_TOKEN}@git.heroku.com/timetrackin.git
 git push heroku main
