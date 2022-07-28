@@ -26,6 +26,8 @@ jobs:
     if: ${{ github.ref == 'refs/heads/main' }}
     runs-on: ubuntu-latest
     steps:
+      - name: Delete obvious Heroku
+        run: git remote rm heroku
       - name: Set Environements variables
         env:
           HEROKU_USERNAME: ${{ secrets.HEROKU_USERNAME }}
