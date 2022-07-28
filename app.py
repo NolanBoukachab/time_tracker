@@ -86,7 +86,6 @@ def login_required(view):
         if g.user is None:
             return redirect(url_for("login"))
         return view(*args, **kwargs)
-
     return wrapped_view
 
 
@@ -138,7 +137,8 @@ def submit_add_event():
 
     db = get_db()
     db.execute(
-        "INSERT INTO events(user_id, date, hours, comments) VALUES (:user_id, :date, :hours, :comments)",
+        "INSERT INTO events(user_id, date, hours, comments) \
+            VALUES (:user_id, :date, :hours, :comments)",
         dict(
             user_id=g.user["id"],
             date=event_date,

@@ -77,9 +77,6 @@ def test_add_event_fail(db, create_user, client):
     with client.session_transaction() as sess:
         sess["user_id"] = user["id"]
 
-    # act
-    params = dict(date="2022-01-01", hours="0", comments="Work")
-
     # assert
     assert len(db.execute("SELECT * FROM events").fetchall()) == 0
 
