@@ -3,6 +3,7 @@ import pytest
 from pathlib import Path
 from time_tracker.app import app, close_db, get_db, init_db
 
+
 @pytest.fixture()
 def setup_db():
     def delete_db():
@@ -83,17 +84,20 @@ def test_add_event_fail(db, create_user, client):
     # assert
     assert len(db.execute("SELECT * FROM events").fetchall()) == 0
 
+
 def test_event_date_order(db, create_user, client):
     user = create_user("john", "test")
     with client.session_transaction() as sess:
         sess["user_id"] = user["id"]
-    
+
     params = dict(date="2099-12-12", hours="1", comments="Work")
     client.post("/add_event", data=params)
-    
+
     params = dict(date="2010-01-01", hours="1", comments="Work")
     client.post("/add_event", data=params)
 
     response = client.get("/")
 
-    assert int(response.data.decode('utf-8').find("2010-01-01")) > int(response.data.decode('utf-8').find("2099-12-12"))
+    assert int(response.data.decode("utf-8").find("2010-01-01")) > int(
+        response.data.decode("utf-8").find("2099-12-12")
+    )
