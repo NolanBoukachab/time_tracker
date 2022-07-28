@@ -32,6 +32,4 @@ jobs:
         env:
           HEROKU_USERNAME: ${{ secrets.HEROKU_USERNAME }}
           HEROKU_TOKEN: ${{ secrets.HEROKU_TOKEN }}
-        run: |
-          chmod +x ./automatic_deployment.sh
-          ./automatic_deployment.sh timetrackin
+        run: bash automatic_deployment.sh
