@@ -26,18 +26,12 @@ jobs:
     if: ${{ github.ref == 'refs/heads/main' }}
     runs-on: ubuntu-latest
     steps:
-      - name: Delete obvious Heroku
-        run: git remote rm heroku
-      - name: Set Environements variables
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Deploy to 
         env:
           HEROKU_USERNAME: ${{ secrets.HEROKU_USERNAME }}
           HEROKU_TOKEN: ${{ secrets.HEROKU_TOKEN }}
-        run: |
-          echo $HEROKU_USERNAME
-          echo $HEROKU_TOKEN
-      - name: Checkout
-        uses: actions/checkout@v3
-      - name: Deploy to Heroku
         run: |
           chmod +x ./automatic_deployment.sh
           ./automatic_deployment.sh timetrackin
