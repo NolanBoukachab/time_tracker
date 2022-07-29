@@ -6,7 +6,7 @@ Installer l'environent avec pipenv :
 ```
 pip install pipenv
 
-pipenv install 
+pipenv install --dev
 
 pipenv shell 
 ```

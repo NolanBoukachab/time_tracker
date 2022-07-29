@@ -7,6 +7,9 @@
  - Continue Deploid 
  - Pipfile for dependence
  - Procfile
+ - bash déployement 
+ - debug horraire = 0 + test
+ - debug ordre d'événement + test 
  
  ## [Unreleased]
  
